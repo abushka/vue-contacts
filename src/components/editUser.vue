@@ -1,19 +1,19 @@
 <template>
-	<div class="block">
+	<div class="block mtop">
 		<div class="block__wrap">
-			<input class="block__inp" type="text" placeholder="name" v-model="name">
-			<input class="block__inp" type="text" placeholder="surname" v-model="surname">
-            <input class="block__inp" type="text" placeholder="address" v-model="address">
-			<input class="block__inp" type="text" placeholder="phone" v-model="phone">
-            <input class="block__inp" type="text" placeholder="sparePhone" v-model="sparePhone">
-			<input class="block__inp" type="text" placeholder="email" v-model="email">
-            <input class="block__inp" type="text" placeholder="spareEmail" v-model="spareEmail">
+            <b-form-input class="block__inp" type="text" placeholder="name" v-model="name"></b-form-input>
+			<b-form-input class="block__inp" type="text" placeholder="surname" v-model="surname"></b-form-input>
+            <b-form-input class="block__inp" type="text" placeholder="address" v-model="address"></b-form-input>
+			<b-form-input class="block__inp" type="tel" placeholder="phone" v-model="phone"></b-form-input>
+            <b-form-input class="block__inp" type="tel" placeholder="sparePhone" v-model="sparePhone"></b-form-input>
+			<b-form-input class="block__inp" type="email" placeholder="email" v-model="email"></b-form-input>
+            <b-form-input class="block__inp" type="email" placeholder="spareEmail" v-model="spareEmail"></b-form-input>
 		</div>
 		<p v-if='error' class="color_red">name and phone fields are required</p>
 
-        <router-link class="btn__back" :to="{name:'page-user', query:{item}}">Go Back</router-link>
-		<button v-if="!item" class="btn__save" @click="addUser({name, surname, address, phone, sparePhone, email, spareEmail})">Save</button>
-		<button v-if="item" class="btn__save" @click="edit({name, surname, address, phone, sparePhone, email, spareEmail, item})">Edit</button>
+        <b-button variant="success" class="mt-5 mr-1"><router-link class="btn_back" :to="{name:'page-user', query:{item}}">Go Back</router-link></b-button>
+		<b-button v-if="!item" variant="success" class="mt-5" @click="addUser({name, surname, address, phone, sparePhone, email, spareEmail})">Save</b-button>
+		<b-button v-if="item" variant="success" class="mt-5" @click="edit({name, surname, address, phone, sparePhone, email, spareEmail, item})">Edit</b-button>
 
 	</div>
 </template>
@@ -85,6 +85,9 @@ export default {
 </script>
 
 <style scoped>
+.mtop {
+    margin-top: 70px;
+}
 .block__inp::placeholder{
     color: #333;
     font-size: 18px;
@@ -96,55 +99,24 @@ export default {
     align-items: center;
 }
 
-.mt{
-	margin-top: 25px;
-}
-
 .block__inp{
-    border: none;
     width: 400px;
     height: 35px;
-    border-radius: 11px;
-    background: #999;
     font-size: 21px;
     padding-left: 30px;
     margin-top: 30px;
 }
 
-.btn__save{
-	padding: 10px 25px;
-	font-size: 21px;
-	background: rgb(96, 210, 30);
-	border-radius: 11px;
-	border: none;
-	margin: 20px 15px;
-	transition: .3s all;
+.color_red{
+	color: red;
 }
 
-.btn__back{
-    width: 80px;
-    padding: 13px 10px;
-    margin: 20px 15px;
-    font-size: 18px;
-    color: #000;
-    background: rgb(96, 210, 30);
-    border-radius: 11px;
-    border: none;
-    transition: .3s all;
+.btn_back {
+    color: #ffffff;
     text-decoration: none;
 }
 
-.btn__save:hover{
-	background: rgb(74, 160, 16);
-	color: rgb(241, 204, 204);
-}
-
-.btn__back:hover {
-    background: rgb(74, 160, 16);
-    color: rgb(241, 204, 204);
-}
-
-.color_red{
-	color: red;
+input::-webkit-input-placeholder {
+    opacity: 0.6;
 }
 </style>
